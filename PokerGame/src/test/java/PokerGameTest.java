@@ -8,4 +8,12 @@ public class PokerGameTest {
         String expectedResult = game.judge(input);
         assert expectedResult.equals("White wins");
     }
+
+    @Test
+    public void shouldReturnWhiteWinsInCase2() {
+        String input = "Black: `2H 4S 4C 2D 4H` White: `2S 8S AS QS 3S`";
+        PokerGame game = new PokerGame();
+        String expectedResult = game.judge(input);
+        assert expectedResult.equals("White wins");
+    }
 }

@@ -10,29 +10,35 @@ public class PokerGame {
         String result = "tie";
 
         sort(black);
+        setCardsType(black);
         sort(white);
+        setCardsType(white);
+
+        if(getIndexInStringArray(white.type, TYPE) > getIndexInStringArray(black.type, TYPE)) {
+            return "White wins";
+        } else if (getIndexInStringArray(white.type, TYPE) < getIndexInStringArray(black.type, TYPE)) {
+            return "Black wins";
+        }
 
         for (int i = 0; i < black.content.length; i++) {
-            int blackIndex = getIndexInStringArray(black.content[i].substring(0,1), CARD_NUMBER);
-            int whiteIndex = getIndexInStringArray(white.content[i].substring(0,1), CARD_NUMBER);
+            int blackNumberIndex = getIndexInStringArray(black.getCardNumber(i), CARD_NUMBER);
+            int whiteNumberIndex = getIndexInStringArray(white.getCardNumber(i), CARD_NUMBER);
 
-            if (blackIndex > whiteIndex) {
-                result = "Black wins";
-                break;
-            } else if (whiteIndex > blackIndex) {
-                result = "White wins";
-                break;
+            if (blackNumberIndex > whiteNumberIndex) {
+                return "Black wins";
+            } else if (whiteNumberIndex > blackNumberIndex) {
+                return "White wins";
             }
         }
 
-        return result;
+        return "Tie";
     }
 
     private void sort(Cards cards) {
         for (int i = 0; i < cards.content.length - 1; i++) {
             for (int j = 0; j < cards.content.length - 1; j++) {
-                int currentIndex = getIndexInStringArray(cards.content[j].substring(0,1), CARD_NUMBER);
-                int nextIndex = getIndexInStringArray(cards.content[j + 1].substring(0,1), CARD_NUMBER);
+                int currentIndex = getIndexInStringArray(cards.getCardNumber(j), CARD_NUMBER);
+                int nextIndex = getIndexInStringArray(cards.getCardNumber(j + 1), CARD_NUMBER);
 
                 if(currentIndex < nextIndex) {
                     String tmp = cards.content[j];
@@ -46,6 +52,38 @@ public class PokerGame {
             System.out.print(cards.content[i] + " ");
         }
         System.out.println();*/
+    }
+
+    private void setCardsType(Cards sortedCards) {
+        // flush
+        boolean isFlush = true;
+        String suit = sortedCards.getCardSuit(0);
+        for (int i = 1; i < sortedCards.content.length; i++) {
+            if (!suit.equals(sortedCards.getCardSuit(i))){
+                isFlush = false;
+                break;
+            }
+        }
+
+        // straight
+        boolean isStraight = true;
+        int firstCardNumberIndex = getIndexInStringArray(sortedCards.getCardNumber(0), CARD_NUMBER);
+        for (int i = 1; i < sortedCards.content.length; i++) {
+            if(getIndexInStringArray(sortedCards.getCardNumber(i), CARD_NUMBER) != firstCardNumberIndex + i) {
+                isStraight = false;
+                break;
+            }
+        }
+
+        if (isFlush && isStraight) {
+            sortedCards.type = "straight flush";
+        } else if (isFlush) {
+            sortedCards.type = "flush";
+        } else if (isStraight) {
+            sortedCards.type = "straight";
+        } else {
+            sortedCards.type = "high card";
+        }
     }
 
     private int getIndexInStringArray(String source, String[] array) {
