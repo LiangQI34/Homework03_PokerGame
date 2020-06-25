@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="PokerGameTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-25T02:27:25" hostname="LAPTOP-JQUVDO8R" time="0.003">
+<testsuite name="PokerGameTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-06-25T02:44:57" hostname="LAPTOP-JQUVDO8R" time="0.004">
   <properties/>
-  <testcase name="shouldReturnBlackWinsInCase8" classname="PokerGameTest" time="0.003"/>
-  <system-out><![CDATA[two pairs
-AS AC 2H 2C KD 
-two pairs
-KD KS 7D 7H 4C 
-]]></system-out>
+  <testcase name="shouldReturnTieInCase4" classname="PokerGameTest" time="0.002"/>
+  <testcase name="shouldReturnWhiteWinsInCase1" classname="PokerGameTest" time="0.0"/>
+  <testcase name="shouldReturnWhiteWinsInCase2" classname="PokerGameTest" time="0.0"/>
+  <testcase name="shouldReturnWhiteWinsInCase6" classname="PokerGameTest" time="0.001"/>
+  <testcase name="shouldReturnWhiteWinsInCase7" classname="PokerGameTest" time="0.0"/>
+  <testcase name="shouldReturnBlackWinsInCase3" classname="PokerGameTest" time="0.0"/>
+  <testcase name="shouldReturnBlackWinsInCase5" classname="PokerGameTest" time="0.0"/>
+  <testcase name="shouldReturnBlackWinsInCase8" classname="PokerGameTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

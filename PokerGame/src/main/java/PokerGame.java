@@ -1,8 +1,23 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class PokerGame {
     static final String[] TYPE = {"high card", "one pair", "two pairs", "three of a kind", "straight", "flush", "straight flush"};
     static final String[] CARD_NUMBER = {"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"};
+
+    public static void main(String[] args) {
+        PokerGame game = new PokerGame();
+
+
+        try (BufferedReader is = new BufferedReader(new InputStreamReader(System.in))) {
+            String input = is.readLine();
+            System.out.println(game.judge(input));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public String judge(String input) {
         String[] raw = input.split("`");
@@ -51,11 +66,6 @@ public class PokerGame {
                 }
             }
         }
-
-        /*for (int i = 0; i < cards.content.length; i++) {
-            System.out.print(cards.content[i] + " ");
-        }
-        System.out.println();*/
     }
 
     private void setCardsType(Cards sortedCards) {
@@ -124,12 +134,9 @@ public class PokerGame {
         } else {
             sortedCards.type = "high card";
         }
-
-        //System.out.println(sortedCards.type);
     }
 
     private void sortByType(Cards cards) {
-        System.out.println(cards.type);
         if (cards.type.equals("three of a kind") || cards.type.equals("one pair") || cards.type.equals("two pairs")) {
             ArrayList<String> sortedList = new ArrayList<>();
 
@@ -159,11 +166,6 @@ public class PokerGame {
             }
 
             cards.content = sortedList.toArray(cards.content);
-
-            for (int i = 0; i < cards.content.length; i++) {
-                System.out.print(cards.content[i] + " ");
-            }
-            System.out.println();
         }
     }
 
