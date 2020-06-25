@@ -16,4 +16,42 @@ public class PokerGameTest {
         String expectedResult = game.judge(input);
         assert expectedResult.equals("White wins");
     }
+
+    @Test
+    public void shouldReturnBlackWinsInCase3() {
+        // passed without change before case 2.
+        String input = "Black: `2H 3H 5H 9H KH` White: `2C 3H 4S 5C 6H`";
+        PokerGame game = new PokerGame();
+        String expectedResult = game.judge(input);
+        assert expectedResult.equals("Black wins");
+    }
+
+    @Test
+    public void shouldReturnTieInCase4() {
+        // passed without change before case 2.
+        String input = "Black: `2H 3D 5S 9C KD` White: `2D 3H 5C 9S KH`";
+        PokerGame game = new PokerGame();
+        String expectedResult = game.judge(input);
+        assert expectedResult.equals("Tie");
+    }
+
+    @Test
+    public void shouldReturnBlackWinsInCase5() {
+        // judge between one pair and two pairs
+        String input = "Black: `2C 3H 3S 6C 6H` White: `2C 2S 3C 6D KH`";
+        PokerGame game = new PokerGame();
+        String expectedResult = game.judge(input);
+        assert expectedResult.equals("Black wins");
+    }
+
+    @Test
+    public void shouldReturnWhiteWinsInCase6() {
+        // judge between flush and straight flush
+        String input = "Black: `2C KC 3C 5C 6C` White: `3D 5D 7D 4D 6D`";
+        PokerGame game = new PokerGame();
+        String expectedResult = game.judge(input);
+        assert expectedResult.equals("White wins");
+    }
+
+
 }

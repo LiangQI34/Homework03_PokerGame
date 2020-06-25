@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="PokerGameTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-06-24T05:51:53" hostname="LAPTOP-JQUVDO8R" time="0.003">
+<testsuite name="PokerGameTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-25T01:43:28" hostname="LAPTOP-JQUVDO8R" time="0.005">
   <properties/>
-  <testcase name="shouldReturnWhiteWinsInCase1" classname="PokerGameTest" time="0.003"/>
-  <testcase name="shouldReturnWhiteWinsInCase2" classname="PokerGameTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="shouldReturnWhiteWinsInCase6" classname="PokerGameTest" time="0.005"/>
+  <system-out><![CDATA[flush
+straight flush
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
