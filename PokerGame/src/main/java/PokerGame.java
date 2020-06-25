@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class PokerGame {
     static final String[] TYPE = {"high card", "one pair", "two pairs", "three of a kind", "straight", "flush", "straight flush"};
     static final String[] CARD_NUMBER = {"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"};
@@ -11,8 +13,10 @@ public class PokerGame {
 
         sort(black);
         setCardsType(black);
+        sortByType(black);
         sort(white);
         setCardsType(white);
+        sortByType(white);
 
         if(getIndexInStringArray(white.type, TYPE) > getIndexInStringArray(black.type, TYPE)) {
             return "White wins";
@@ -102,6 +106,7 @@ public class PokerGame {
                 isOnePair = false;
 
             }
+            i = j - 1;
         }
 
         if (isFlush && isStraight) {
@@ -115,11 +120,51 @@ public class PokerGame {
         } else if (isTwoPairs) {
             sortedCards.type = "two pairs";
         } else if (isOnePair) {
-            sortedCards.type = "one pairs";
+            sortedCards.type = "one pair";
         } else {
             sortedCards.type = "high card";
         }
-        System.out.println(sortedCards.type);
+
+        //System.out.println(sortedCards.type);
+    }
+
+    private void sortByType(Cards cards) {
+        System.out.println(cards.type);
+        if (cards.type.equals("three of a kind") || cards.type.equals("one pair") || cards.type.equals("two pairs")) {
+            ArrayList<String> sortedList = new ArrayList<>();
+
+            // add same card first.
+            for (int i = 0; i < cards.content.length; i++) {
+                int j = i + 1;
+                while (j < cards.content.length && cards.getCardNumber(j).equals( cards.getCardNumber(i) )) {
+                    sortedList.add(cards.content[j]);
+                    cards.content[j] = null;
+                    j++;
+                    if (j - i == 3){
+                        break;
+                    }
+                }
+                if(j - i > 1) {
+                    sortedList.add(cards.content[i]);
+                    cards.content[i] = null;
+                }
+                i = j - 1;
+            }
+
+            // add others
+            for (int i = 0; i < cards.content.length; i++) {
+                if (cards.content[i] != null) {
+                    sortedList.add(cards.content[i]);
+                }
+            }
+
+            cards.content = sortedList.toArray(cards.content);
+
+            for (int i = 0; i < cards.content.length; i++) {
+                System.out.print(cards.content[i] + " ");
+            }
+            System.out.println();
+        }
     }
 
     private int getIndexInStringArray(String source, String[] array) {

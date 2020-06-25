@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="PokerGameTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-25T01:43:28" hostname="LAPTOP-JQUVDO8R" time="0.005">
+<testsuite name="PokerGameTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-25T02:27:25" hostname="LAPTOP-JQUVDO8R" time="0.003">
   <properties/>
-  <testcase name="shouldReturnWhiteWinsInCase6" classname="PokerGameTest" time="0.005"/>
-  <system-out><![CDATA[flush
-straight flush
+  <testcase name="shouldReturnBlackWinsInCase8" classname="PokerGameTest" time="0.003"/>
+  <system-out><![CDATA[two pairs
+AS AC 2H 2C KD 
+two pairs
+KD KS 7D 7H 4C 
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

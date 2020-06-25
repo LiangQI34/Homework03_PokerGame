@@ -53,5 +53,24 @@ public class PokerGameTest {
         assert expectedResult.equals("White wins");
     }
 
+    @Test
+    public void shouldReturnWhiteWinsInCase7() {
+        // judge when both are one pair
+        String input = "Black: `2C KD 2H 5C AS` White: `KS 5H 7D 4C KD`";
+        PokerGame game = new PokerGame();
+        String expectedResult = game.judge(input);
+        assert expectedResult.equals("White wins");
+    }
+
+    @Test
+    public void shouldReturnBlackWinsInCase8() {
+        // judge when both are two pairs.
+        // pass without change before case 7.
+        String input = "Black: `2C KD 2H AC AS` White: `KS 7H 7D 4C KD`";
+        PokerGame game = new PokerGame();
+        String expectedResult = game.judge(input);
+        assert expectedResult.equals("Black wins");
+    }
+
 
 }
